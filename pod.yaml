@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kdebugtools
+  labels:
+    name: kdebugtools
+spec:
+  containers:
+  - name: kdebugtools
+    image: ghcr.io/globalmaksimum/k-debug-tools:1.0
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 10000"]
