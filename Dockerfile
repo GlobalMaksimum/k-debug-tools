@@ -1,4 +1,4 @@
-FROM ubuntu:noble-20240429
+FROM ubuntu:noble-20250127
 
 ENV YQ="4.29.2"
 ENV KUBECTL="1.30.0"
@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   tree \
   vim-tiny \
   wget \
+  netcat-openbsd \
   software-properties-common
   
 RUN add-apt-repository ppa:fish-shell/release-3 && apt-get update && apt-get install -y --no-install-recommends fish && rm -rf /var/lib/apt/lists/*
