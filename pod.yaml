@@ -7,6 +7,14 @@ metadata:
 spec:
   containers:
   - name: kdebugtools
-    image: ghcr.io/globalmaksimum/k-debug-tools:1.0
+    image: ghcr.io/globalmaksimum/k-debug-tools:2.0
     command: ["/bin/sh"]
-    args: ["-c", "sleep 10000"]
+    args: ["-c", "trap 'echo Received SIGTERM, shutting down gracefully; exit 0' TERM INT; echo Container started, sleeping...; sleep infinity & wait"]
+    terminationGracePeriodSeconds: 20
+    resources:
+      limits:
+        cpu: "1"
+        memory: "512Mi"
+      requests:
+        cpu: "0.5"
+        memory: "256Mi"
